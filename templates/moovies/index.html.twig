@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MooviesController!{% endblock %}
+
+{% block body %}
+    {% for moovie in moovies %}
+        <h2>{{ moovie.title }}</h2>
+        <p>Durée : {{ moovie.duration.format('h') ~ "h" }}</p>
+        {% for room in moovie.rooms %}
+            <p>Nom de la salle: {{ room.name }}</p>
+            <p>Capacité de la salle{{ room.capacity }}</p>
+            <p>Adresse {{ room.location }}</p>
+        {% endfor %}
+
+        <h3>Diffusions :</h3>
+        {% for schedule in moovie.schedules %}
+            <div>
+                <p>Date: {{ schedule.date.format('d-m-y') }}</p>
+                <p>Heure: {{ schedule.hour.format('h') ~ 'h' }}</p>
+            </div>
+        {% endfor %}
+
+
+    {% endfor %}
+{% endblock %}
